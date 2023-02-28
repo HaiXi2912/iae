@@ -88,7 +88,8 @@ function out(num) {
 				result += "    resource:" + "\n"
 				result += "      generate: true" + "\n"
 				result += "      material: " + value_item + "\n"
-				result += "      textures: " + value_textures + value_filename + "\n" + "\n"
+				result += "      textures: \n"
+				result += "      - " + value_textures + value_filename + "\n" + "\n"
 				zt = 0
 			zt = 0
 }
@@ -244,7 +245,7 @@ console.log(value);
 				value_efilename = value
 
 
-				result += "ren " + value_efilename + " " + value_filename + ".png " + "\n"
+				result += "ren '" + value_efilename + "' '" + value_filename + ".png' " + "\n"
 				zt = 0
 
 
