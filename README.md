@@ -1,4 +1,4 @@
-# iae
+# Itemsadder Editor v0.1
 IA网页编辑器
 适合批量生成材质配置
 
