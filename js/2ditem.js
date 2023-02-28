@@ -21,18 +21,18 @@ function edit(num) {
 }
 
 function out(num) {
-	
-	
-	
+
+
+
 	if (num == 1) {
 		run.style.transform = "translateY(-90%) translateX(-110%)"
 		run.style.width = "70%"
 		run.style.height = "90%"
 		run.style.borderRadius = "20px"
 		run2.style.display = "block"
-		}
-		
-		
+	}
+
+
 	if (num == 2) {
 		run.style.transform = "translateY(-90%) translateX(-110%)"
 		run.style.width = "70%"
@@ -58,32 +58,43 @@ function out(num) {
 			var value = inputs[i].value;
 			// 进行处理
 			// 将处理结果存储
-			if(zt == 1){value_filename = value}
-			if(zt == 2){value_iaid = value}
-			if(zt == 3){value_itemname = value}
-			if(zt == 4){value_item = value}
-			if(zt == 5){value_textures = value}
-			if(zt == 6){value_prem = value
-			
-			result +=  "  " + value_iaid + ":" + "\n"
-			result +=  "    display_name: '" + value_itemname + "'" + "\n"
-			result +=  "    permission: " + value_prem + "\n"
-			result +=  "    resource:" + "\n"
-			result +=  "      generate: true" + "\n"
-			result +=  "      material: " + value_item + "\n"
-			result +=  "      textures: " + value_textures + value_filename + "\n" + "\n"
-			zt = 0
-			
-			
+			if (zt == 1) {
+				value_filename = value
 			}
-			
+			if (zt == 2) {
+				value_iaid = value
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 6) {
+				value_prem = value
+
+				result += "  " + value_iaid + ":" + "\n"
+				result += "    display_name: '" + value_itemname + "'" + "\n"
+				result += "    permission: " + value_prem + "\n"
+				result += "    resource:" + "\n"
+				result += "      generate: true" + "\n"
+				result += "      material: " + value_item + "\n"
+				result += "      textures: " + value_textures + value_filename + "\n" + "\n"
+				zt = 0
+
+
+			}
+
 
 		}
 		// 将处理结果放入textarea
 		document.getElementById('out3').value = result;
 	}
-	
-	
+
+
 	if (num == 3) {
 		var zt = 0
 
@@ -104,32 +115,43 @@ function out(num) {
 			var value = inputs[i].value;
 			// 进行处理
 			// 将处理结果存储
-			if(zt == 1){value_filename = value}
-			if(zt == 2){value_iaid = value}
-			if(zt == 3){value_itemname = value}
-			if(zt == 4){value_item = value}
-			if(zt == 5){value_textures = value}
-			if(zt == 6){value_prem = value
-			parameter = document.getElementById("out_parameter").value;
-			result +=  "      - "+parameter+":" + value_iaid + "\n"
-			zt = 0
-			
-			
+			if (zt == 1) {
+				value_filename = value
 			}
-			
+			if (zt == 2) {
+				value_iaid = value
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 6) {
+				value_prem = value
+				parameter = document.getElementById("out_parameter").value;
+				result += "      - " + parameter + ":" + value_iaid + "\n"
+				zt = 0
+
+
+			}
+
 
 		}
 		// 将处理结果放入textarea
 		document.getElementById('out3').value = result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	if (num == 5) {
 		run.style.transform = "translateY(0%) translateX(0%)"
 		run.style.width = "80px"
@@ -137,40 +159,42 @@ function out(num) {
 		run.style.borderRadius = "50px"
 		run2.style.display = "none"
 	}
-	
+
 	if (num == 4) {
-    var keywords=document.getElementById('out_parameter').value; //获取input中的关键词
-    keywords=keywords.split('|');//以|分割关键词
-    var out=document.getElementById('out3').value;//获取textarea的的内容
-    var array=out.split('\n').filter(function(e){return e});//以换行符分割textarea中的内容，并剔除空行
-    var newArray=[];
-    var c;
-    for(var i=0;i<array.length;i++){
-        c=true;
-        for(var j=0;j<keywords.length;j++){  
-            if(array[i].indexOf(keywords[j])!==-1){
-                c=false;
-            }
-        }
-        if(c){
-            newArray.push(array[i].replace(/:$/, ''));//将以:结尾的字符串替换为“”
-        }
-    }
-    document.getElementById('out3').value = '      - ' + newArray.join('\n      - ');//每行前面加上ABC:
+		var keywords = document.getElementById('out_parameter').value; //获取input中的关键词
+		keywords = keywords.split('|'); //以|分割关键词
+		var out = document.getElementById('out3').value; //获取textarea的的内容
+		var array = out.split('\n').filter(function(e) {
+			return e
+		}); //以换行符分割textarea中的内容，并剔除空行
+		var newArray = [];
+		var c;
+		for (var i = 0; i < array.length; i++) {
+			c = true;
+			for (var j = 0; j < keywords.length; j++) {
+				if (array[i].indexOf(keywords[j]) !== -1) {
+					c = false;
+				}
+			}
+			if (c) {
+				newArray.push(array[i].replace(/:$/, '')); //将以:结尾的字符串替换为“”
+			}
+		}
+		document.getElementById('out3').value = '      - ' + newArray.join('\n      - '); //每行前面加上ABC:
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 
-	
+
+
+
+
+
+
+
+
+
+
 	if (num == 8) {
 		var zt = 0
 
@@ -180,6 +204,7 @@ function out(num) {
 		var value_item = ""
 		var value_textures = ""
 		var value_prem = ""
+		var value_efilename = ""
 
 		var inputs = document.getElementById('list').getElementsByTagName('input');
 		// 用来存储元素值
@@ -188,47 +213,57 @@ function out(num) {
 		for (var i = 0; i < inputs.length; i++) {
 			zt++
 			// 获取元素值
-			var firstSpanText = document.querySelector('table span').innerHTML;
 			var value = inputs[i].value;
-			
+
 			// 进行处理
 			// 将处理结果存储
-			if(zt == 1){value_filename = value}
-			if(zt == 2){value_iaid = value}
-			if(zt == 3){value_itemname = value}
-			if(zt == 4){value_item = value}
-			if(zt == 5){value_textures = value}
-			if(zt == 6){value_prem = value
-			
-
-			
-			result +=  "ren "+value_filename+".png " + firstSpanText + "\n"
-			zt = 0
-			
-			
+			if (zt == 1) {
+				value_filename = value
 			}
-			
+			if (zt == 2) {
+				value_iaid = value
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 7) {
+				value_efilename = value
+
+
+				result += "ren " + value_efilename + " " + value_filename + ".png " + "\n"
+				zt = 0
+
+
+			}
+
 
 		}
 		// 将处理结果放入textarea
 		document.getElementById('out3').value = "";
-		document.getElementById('out3').value += "#使用方法:\n#1.在文件目录下创建 name.bat\n#2.将下方代码复制上去，然后运行name.bat\n#请做好备份，改名不可撤回\n\n";
+		document.getElementById('out3').value +=
+			"#使用方法:\n#1.在文件目录下创建 name.bat\n#2.将下方代码复制上去，然后运行name.bat\n#请做好备份，改名不可撤回\n\n";
 		document.getElementById('out3').value += result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 edit(2)
 
@@ -272,7 +307,7 @@ $(function() {
 		var ss = this.files; //获取当前选择的文件对象
 		for (var m = 0; m < ss.length; m++) { //循环添加进度条
 			efileName = ss[m].name;
-			
+
 			if (muban_name_hz === true) {
 				dfileName = document.getElementById("muban_edit_name").value;
 				muban_name_num++
@@ -284,10 +319,10 @@ $(function() {
 				muban_name2_num++
 				muban_name2 = dfileName + "_" + muban_name2_num
 				console.log("name");
-			} else{
+			} else {
 				muban_name2 = document.getElementById("muban_edit_name2").value;
 			}
-			
+
 			if (muban_iaid_hz === true) {
 				muban_iaid = document.getElementById("muban_edit_iaid").value;
 				muban_iaid_num++
@@ -301,7 +336,7 @@ $(function() {
 				muban_prem = document.getElementById("muban_edit_prem").value;
 				muban_prem = muban_prem + "_" + muban_name2
 			}
-			
+
 			if (muban_name === "") {
 				dfileName = ss[m].name
 			} else {
@@ -315,13 +350,15 @@ $(function() {
 				sfileSize = (Math.round(ss[m].size / 1024)).toString() + 'KB';
 			}
 			$("#list").append(
-				"<tr><td><span class='ename'>" + efileName + "</span><br>文件改名 <input value='" + dfileName +
+				"<tr><td><span class='ename'>" + efileName + "</span><br>文件改名 <input value='" +
+				dfileName +
 				"'> &emsp;&emsp;&emsp;IAID&emsp;&emsp;&emsp; <input value='" + muban_iaid +
 				"'> <br>物品名称 <input value='" + muban_name2 +
 				"'>  &emsp;&emsp;&emsp;物品原型 <input value='" + muban_item +
 				"'> <br>文件路径 <input value='" + muban_file +
 				"'> &emsp;&emsp;&emsp;物品权限 <input value='" + muban_prem +
-				"'> </td><td style='text-align: center;'>x</td></tr>");
+				"'> </td><td style='text-align: center;'>x<input class='efn' value='" + efileName +
+				"'></td></tr>");
 		}
 		sendAjax();
 
@@ -338,10 +375,9 @@ $(function() {
 				url: 'fileUpLoad.action',
 				type: 'POST',
 				cache: false,
-				data: {}, //需要什么参数，自己配置
-				data: formData, //文件以formData形式传入
+				data: {},
+				data: formData,
 				processData: false,
-				//必须false才会自动加上正确的Content-Type 
 				contentType: false,
 				/*  beforeSend:beforeSend,//发送请求
 	            complete:complete,//请求完成
