@@ -1,142 +1,404 @@
-<!DOCTYPE html>
-<html style="overflow: hidden;">
-	<head>
-		<meta charset="utf-8" />
-		<script src="./js/new_file.js" type="text/javascript" charset="utf-8"></script>
-		<title>IAE v0.1</title>
-		<title></title>
-	</head>
-	<body>
-		<div id="run" onclick="out(1)">
-			<p>></p>
+var fileeditmove = document.getElementById('fileeditmove')
+var itemedit_button = document.getElementById('itemeditbutton')
+var mubanedit_button = document.getElementById('mubaneditbutton')
 
-			<div id="out_mode">
-				<span class="mode" style="background-color: #a1a1a1;"> MODE </span>
-				<span class="mode modehover" onclick="out(2)"> ITEM </span>
-				<span class="mode modehover" onclick="out(3)">CATEGORIES</span>
-				<span class="mode modehover" onclick="out(8)">FileName</span>
-				<span class="mode modehover" onclick="out(4)">Only
-					CATEGORIES</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<span class="mode2">Parameter<input id="out_parameter" style="width: 300px;"></span>
-			</div>
-			<div id="out3div">
-				<textarea id="out3" style="resize: none;width: 100%;height: 100%;">
+function edit(num) {
+	if (num == 1) {
+		fileeditmove.style.transform = "translateX(-50%)"
+		itemedit_button.style.fontSize = "16px"
+		mubanedit_button.style.fontSize = "28px"
+		mubanedit_button.style.backgroundColor = "rgba(255, 255, 255, 0.8)"
+		itemedit_button.style.backgroundColor = "rgba(255, 255, 255, 0.3)"
+	}
+	if (num == 2) {
+		fileeditmove.style.transform = "translateX(0%)"
 
-				</textarea>
-			</div>
-		</div>
-		<div id="run2" onclick="out(5)">
+		itemedit_button.style.fontSize = "28px"
+		mubanedit_button.style.fontSize = "16px"
+		mubanedit_button.style.backgroundColor = "rgba(255, 255, 255, 0.3)"
+		itemedit_button.style.backgroundColor = "rgba(255, 255, 255, 0.8)"
+	}
+}
 
-		</div>
-		<div id="nav">
+function out(num) {
 
-			<!-- 			<div style="font-size: 20px; margin: 0;padding-top: 25px;margin-left: 100px">Itemsadder Editor v0.1</div>
+
+
+	if (num == 1) {
+		run.style.transform = "translateY(-90%) translateX(-110%)"
+		run.style.width = "70%"
+		run.style.height = "90%"
+		run.style.borderRadius = "20px"
+		run2.style.display = "block"
+	}
+
+
+	if (num == 2) {
+		run.style.transform = "translateY(-90%) translateX(-110%)"
+		run.style.width = "70%"
+		run.style.height = "90%"
+		run.style.borderRadius = "20px"
+		run2.style.display = "block"
+		var zt = 0
+
+		var value_filename = ""
+		var value_iaid = ""
+		var value_itemname = ""
+		var value_item = ""
+		var value_textures = ""
+		var value_prem = ""
+
+		var inputs = document.getElementById('list').getElementsByTagName('input');
+		// 用来存储元素值
+		var result = "";
+		// 遍历input
+		for (var i = 0; i < inputs.length; i++) {
+			zt++
+			// 获取元素值
+			var value = inputs[i].value;
+			// 进行处理
+			// 将处理结果存储
+			if (zt == 1) {
+				value_filename = value
+			}
+			if (zt == 2) {
+				value_iaid = value
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 6) {
+				value_prem = value
+
+
+
+
+			}
 			
-			<div style="font-size: 20px; ;margin-left: 50px;padding-top: 25px;flex">2D Item Texture Config</div> -->
-
-			<span id="LOGO"> Itemsadder Editor v0.1 </span>
-			<span id="NOW"> 物品生成器 </span>
-
-
-		</div>
-		<div id="ia2ditem">
-			<div class="filelistdiv">
-
-
-				<div id="fileinput">
-					<div id="test">
-						<input type="file" id="fileMutiply" name="files" multiple="multiple">
-					</div>
-					<p>点击或拖拽上传</p>
-					<p>只能往这里放</p>
-
-				</div>
+			if (zt == 7) {
+				result += "  " + value_iaid + ":" + "\n"
+				result += "    display_name: '" + value_itemname + "'" + "\n"
+				result += "    permission: " + value_prem + "\n"
+				result += "    resource:" + "\n"
+				result += "      generate: true" + "\n"
+				result += "      material: " + value_item + "\n"
+				result += "      textures: \n"
+				result += "      - " + value_textures + value_filename + "\n" + "\n"
+				zt = 0
+			zt = 0
+}
+		}
+		// 将处理结果放入textarea
+		document.getElementById('out3').value = result;
+	}
 
 
-				<div id="filelist">
-					<p style="font-size: 20px;font-weight: 800;"> 关于</p>
-					<hr>
-					<p style="font-size: 20px;font-weight: 600;text-align: left;"> 当前功能</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;根据上传的文件名生成配置</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;根据上传的文件名生成分类</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;根据上传的文件名生成改名bat</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;可将物品配置通过关键词，保留id</p>
-					<hr>
-					<p style="font-size: 20px;font-weight: 600;text-align: left;"> 更新日志</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;V0.1初次制作</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;该网站因自己的需求而做</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;请不要要求作者更新内容</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;暂不提供使用教程</p>
-					<hr>
-					<p style="font-size: 20px;font-weight: 600;text-align: left;"> 免责声名</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;该项目由海曦独立完成</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;部分代码来源于网络</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;您可以任意修改代码</p>
-					<p style="font-size: 16px;text-align: left;">&emsp;但您不得与他人说该网站是自己制作</p>
-					<p style="font-size: 16px;text-align: left;"></p>
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
+	if (num == 3) {
+		var zt = 0
+
+		var value_filename = ""
+		var value_iaid = ""
+		var value_itemname = ""
+		var value_item = ""
+		var value_textures = ""
+		var value_prem = ""
+
+		var inputs = document.getElementById('list').getElementsByTagName('input');
+		// 用来存储元素值
+		var result = "";
+		// 遍历input
+		for (var i = 0; i < inputs.length; i++) {
+			zt++
+			// 获取元素值
+			var value = inputs[i].value;
+			// 进行处理
+			// 将处理结果存储
+			if (zt == 1) {
+				value_filename = value
+			}
+			if (zt == 2) {
+				value_iaid = value
+				
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 6) {
+				value_prem = value
+
+
+			}
+			if (zt == 6) {
+				value_prem = value
+			}
+			if (zt == 7) {
+			parameter = document.getElementById("out_parameter").value;
+			result += "      - " + parameter + ":" + value_iaid + "\n"
+			zt = 0
+}
+console.log(value);
+		}
+		// 将处理结果放入textarea
+		document.getElementById('out3').value = result;
+	}
 
 
 
-			</div>
-			<div id="fileedit" style="display: inline-block;overflow: hidden;width: 100%;">
-				<div id="fileeditnav" style="display: inline-block;width: 100%;">
-
-					<p style="font-size: 20px;font-weight: 800;">
-
-						<span class="editbutton" id="itemeditbutton" onclick="edit(2)">物品编辑</span>
-						&emsp;&emsp;
-						<span class="editbutton" id="mubaneditbutton" onclick="edit(1)">模板编辑</span>
-						<hr />
-				</div>
-
-
-				</p>
-				<div id="fileeditmove"
-					style="height: 100%;width: 200%;transition: 1s;display: flex; justify-content: flex-start;">
-
-
-					<div id="fileeditpage" style="overflow: auto;height: 88%;width: 50%;margin-top: -28px;">
-						<table id="list" border="0" cellspacing="0" cellpadding="0">
-
-						</table>
-					</div>
 
 
 
-					<div id="filemubanpage" style="height: 100%;width: 50%;">
-						<table id="mubaneditgui" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td>模板编辑模式<br>
 
-									文件改名 <input id="muban_edit_name"></input> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 启用后缀
-									_<input style="width: 30px;" id="muban_edit_name_num" /> &emsp;<input
-										type="checkbox" id="muban_edit_name_hz" /> <br>
-									&emsp;IAID&emsp;&emsp;<input id="muban_edit_iaid"></input>
-									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 启用后缀 _<input style="width: 30px;"
-										id="muban_edit_iaid_num" /> &emsp;<input type="checkbox"
-										id="muban_edit_iaid_hz" /> <br>
-									物品名称 <input id="muban_edit_name2"></input> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 启用后缀
-									_<input style="width: 30px;" id="muban_edit_name2_num" /> &emsp;<input
-										type="checkbox" id="muban_edit_name2_hz" /> <br>
-									物品原型 <input id="muban_edit_item"></input> &emsp;&emsp;&emsp; <br>
-									文件路径 <input id="muban_edit_file"></input> &emsp;&emsp;&emsp; <br>
-									物品权限 <input id="muban_edit_prem"></input> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-									启用后缀_物品名称 &emsp;<input type="checkbox" id="muban_edit_prem_hz" /></td>
-						</table>
-						<button id="inputin" type="button" onclick="tj()">提交</button>
-					</div>
-				</div>
 
-			</div>
+	if (num == 5) {
+		run.style.transform = "translateY(0%) translateX(0%)"
+		run.style.width = "80px"
+		run.style.height = "80px"
+		run.style.borderRadius = "50px"
+		run2.style.display = "none"
+	}
 
-			<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	if (num == 4) {
+		var keywords = document.getElementById('out_parameter').value; //获取input中的关键词
+		keywords = keywords.split('|'); //以|分割关键词
+		var out = document.getElementById('out3').value; //获取textarea的的内容
+		var array = out.split('\n').filter(function(e) {
+			return e
+		}); //以换行符分割textarea中的内容，并剔除空行
+		var newArray = [];
+		var c;
+		for (var i = 0; i < array.length; i++) {
+			c = true;
+			for (var j = 0; j < keywords.length; j++) {
+				if (array[i].indexOf(keywords[j]) !== -1) {
+					c = false;
+				}
+			}
+			if (c) {
+				newArray.push(array[i].replace(/:$/, '')); //将以:结尾的字符串替换为“”
+			}
+		}
+		document.getElementById('out3').value = '      - ' + newArray.join('\n      - '); //每行前面加上ABC:
 
-	</body>
-	<script src="js/2ditem.js" type="text/javascript" charset="utf-8"></script>
+	}
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+	if (num == 8) {
+		var zt = 0
+
+		var value_filename = ""
+		var value_iaid = ""
+		var value_itemname = ""
+		var value_item = ""
+		var value_textures = ""
+		var value_prem = ""
+		var value_efilename = ""
+
+		var inputs = document.getElementById('list').getElementsByTagName('input');
+		// 用来存储元素值
+		var result = "";
+		// 遍历input
+		for (var i = 0; i < inputs.length; i++) {
+			zt++
+			// 获取元素值
+			var value = inputs[i].value;
+
+			// 进行处理
+			// 将处理结果存储
+			if (zt == 1) {
+				value_filename = value
+			}
+			if (zt == 2) {
+				value_iaid = value
+			}
+			if (zt == 3) {
+				value_itemname = value
+			}
+			if (zt == 4) {
+				value_item = value
+			}
+			if (zt == 5) {
+				value_textures = value
+			}
+			if (zt == 7) {
+				value_efilename = value
+
+
+				result += "ren '" + value_efilename + "' '" + value_filename + ".png' " + "\n"
+				zt = 0
+
+
+			}
+
+
+		}
+		// 将处理结果放入textarea
+		document.getElementById('out3').value = "";
+		document.getElementById('out3').value +=
+			"#使用方法:\n#1.在文件目录下创建 name.bat\n#2.将下方代码复制上去，然后运行name.bat\n#请做好备份，改名不可撤回\n\n";
+		document.getElementById('out3').value += result;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+edit(2)
+
+
+/**
+ * 
+ */
+var i = 0;
+var j = 0;
+
+var muban_name = "";
+var muban_name2 = "";
+var muban_file = "";
+var muban_item = "";
+var muban_prem = "";
+var muban_iaid = "";
+var muban_name_hz = "";
+var muban_name2_hz = "";
+var muban_iaid_hz = "";
+var muban_prem_hz = "";
+
+function tj() {
+	muban_name = document.getElementById("muban_edit_name").value;
+	muban_name2 = document.getElementById("muban_edit_name2").value;
+	muban_name2 = document.getElementById("muban_edit_iaid").value;
+	muban_file = document.getElementById("muban_edit_file").value;
+	muban_item = document.getElementById("muban_edit_item").value;
+	muban_prem = document.getElementById("muban_edit_prem").value;
+	muban_name_hz = document.getElementById("muban_edit_name_hz").checked;
+	muban_name2_hz = document.getElementById("muban_edit_name2_hz").checked;
+	muban_iaid_hz = document.getElementById("muban_edit_iaid_hz").checked;
+	muban_prem_hz = document.getElementById("muban_edit_prem_hz").checked;
+	muban_name_num = document.getElementById("muban_edit_name_num").value;
+	muban_name2_num = document.getElementById("muban_edit_name2_num").value;
+	muban_iaid_num = document.getElementById("muban_edit_iaid_num").value;
+}
+
+var dfileName = ""
+$(function() {
+	$("#fileMutiply").change(function eventStart() {
+		var ss = this.files; //获取当前选择的文件对象
+		for (var m = 0; m < ss.length; m++) { //循环添加进度条
+			efileName = ss[m].name;
+
+			if (muban_name_hz === true) {
+				dfileName = document.getElementById("muban_edit_name").value;
+				muban_name_num++
+				muban_name = dfileName + "_" + muban_name_num
+			}
+
+			if (muban_name2_hz === true) {
+				dfileName = document.getElementById("muban_edit_name2").value;
+				muban_name2_num++
+				muban_name2 = dfileName + "_" + muban_name2_num
+				console.log("name");
+			} else {
+				muban_name2 = document.getElementById("muban_edit_name2").value;
+			}
+
+			if (muban_iaid_hz === true) {
+				muban_iaid = document.getElementById("muban_edit_iaid").value;
+				muban_iaid_num++
+				muban_iaid = muban_iaid + "_" + muban_iaid_num
+			} else {
+				muban_iaid = muban_name2
+
+
+			}
+			if (muban_prem_hz === true) {
+				muban_prem = document.getElementById("muban_edit_prem").value;
+				muban_prem = muban_prem + "_" + muban_name2
+			}
+
+			if (muban_name === "") {
+				dfileName = ss[m].name
+			} else {
+
+				dfileName = muban_name
+
+			}
+			if (ss[m].size > 1024 * 1024) {
+				sfileSize = (Math.round(ss[m].size / (1024 * 1024))).toString() + 'MB';
+			} else {
+				sfileSize = (Math.round(ss[m].size / 1024)).toString() + 'KB';
+			}
+			$("#list").append(
+				"<tr><td><span class='ename'>" + efileName + "</span><br>文件改名 <input value='" +
+				dfileName +
+				"'> &emsp;&emsp;&emsp;IAID&emsp;&emsp;&emsp; <input value='" + muban_iaid +
+				"'> <br>物品名称 <input value='" + muban_name2 +
+				"'>  &emsp;&emsp;&emsp;物品原型 <input value='" + muban_item +
+				"'> <br>文件路径 <input value='" + muban_file +
+				"'> &emsp;&emsp;&emsp;物品权限 <input value='" + muban_prem +
+				"'> </td><td style='text-align: center;'>x<input class='efn' value='" + efileName +
+				"'></td></tr>");
+		}
+		sendAjax();
+
+		function sendAjax() {
+			if (j >= ss.length) //采用递归的方式循环发送ajax请求
+			{
+				$("#fileMutiply").val("");
+				j = 0;
+				return;
+			}
+			var formData = new FormData();
+			formData.append('files', ss[j]); //将该file对象添加到formData对象中
+			$.ajax({
+				url: 'fileUpLoad.action',
+				type: 'POST',
+				cache: false,
+				data: {},
+				data: formData,
+				processData: false,
+				contentType: false,
+				/*  beforeSend:beforeSend,//发送请求
+	            complete:complete,//请求完成
+	    */
+				xhr: function() { //监听用于上传显示进度
+					var xhr = $.ajaxSettings.xhr();
+					if (onprogress && xhr.upload) {
+						xhr.upload.addEventListener("progress", onprogress, false);
+						return xhr;
+					}
+				},
+			});
+		}
+	})
+})
