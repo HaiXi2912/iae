@@ -4,11 +4,7 @@ html {
 	height: 100%;
 	margin: 0;
 	        -webkit-user-select: none; 
-	            /* 兼容IE 10+ 和 Edge */
 	            -ms-user-select: none;
-	            /* 
-	                ⏹禁止用户选中的标准语法
-	            */
 	            user-select: none; 
 
 }
@@ -107,7 +103,8 @@ html {
 }
 
 body {
-	background-image: url(../img/bg.png);
+background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 	background-size: cover;
 	background-repeat: no-repeat;
 
