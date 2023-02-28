@@ -76,6 +76,12 @@ function out(num) {
 			if (zt == 6) {
 				value_prem = value
 
+
+
+
+			}
+			
+			if (zt == 7) {
 				result += "  " + value_iaid + ":" + "\n"
 				result += "    display_name: '" + value_itemname + "'" + "\n"
 				result += "    permission: " + value_prem + "\n"
@@ -84,11 +90,8 @@ function out(num) {
 				result += "      material: " + value_item + "\n"
 				result += "      textures: " + value_textures + value_filename + "\n" + "\n"
 				zt = 0
-
-
-			}
-
-
+			zt = 0
+}
 		}
 		// 将处理结果放入textarea
 		document.getElementById('out3').value = result;
