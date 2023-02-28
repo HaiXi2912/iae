@@ -120,6 +120,7 @@ function out(num) {
 			}
 			if (zt == 2) {
 				value_iaid = value
+				
 			}
 			if (zt == 3) {
 				value_itemname = value
@@ -132,14 +133,18 @@ function out(num) {
 			}
 			if (zt == 6) {
 				value_prem = value
-				parameter = document.getElementById("out_parameter").value;
-				result += "      - " + parameter + ":" + value_iaid + "\n"
-				zt = 0
 
 
 			}
-
-
+			if (zt == 6) {
+				value_prem = value
+			}
+			if (zt == 7) {
+			parameter = document.getElementById("out_parameter").value;
+			result += "      - " + parameter + ":" + value_iaid + "\n"
+			zt = 0
+}
+console.log(value);
 		}
 		// 将处理结果放入textarea
 		document.getElementById('out3').value = result;
