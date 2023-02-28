@@ -4,7 +4,11 @@ html {
 	height: 100%;
 	margin: 0;
 	        -webkit-user-select: none; 
+	            /* 兼容IE 10+ 和 Edge */
 	            -ms-user-select: none;
+	            /* 
+	                ⏹禁止用户选中的标准语法
+	            */
 	            user-select: none; 
 
 }
@@ -53,6 +57,7 @@ html {
 	transition: 0.2s;
 		line-height: 50px;
 		font-weight: 800;
+		font-size: ;
 }
 #run:hover > p{
 	transform: scale(1.2);
@@ -348,4 +353,7 @@ body {
 
 #fileeditpage {
 	transition: 1s;
+}
+.efn{
+	display: none;
 }
