@@ -312,11 +312,12 @@ function tj() {
 
 var dfileName = ""
 $(function() {
+	
 	$("#fileMutiply").change(function eventStart() {
 		var ss = this.files; //获取当前选择的文件对象
 		for (var m = 0; m < ss.length; m++) { //循环添加进度条
 			efileName = ss[m].name;
-
+muban_item = "";
 			if (muban_name_hz === true) {
 				dfileName = document.getElementById("muban_edit_name").value;
 				muban_name_num++
@@ -349,10 +350,34 @@ $(function() {
 			if (muban_name === "") {
 				dfileName = ss[m].name
 			} else {
-
 				dfileName = muban_name
-
 			}
+			
+			if (muban_iaid === "") {
+				muban_iaid = ss[m].name.replace(/\.png$/, "")
+			} else {
+				muban_iaid = muban_iaid
+			}
+			
+			if (muban_name2 === "") {
+				muban_name2 = ss[m].name.replace(/\.png$/, "")
+			} else {
+				muban_name2 = muban_name2
+			}
+			
+			if (muban_edit_item.value === "") {
+				const items = ["bow", "wooden_pickaxe", "stone_pickaxe", "iron_pickaxe", "golden_pickaxe", "diamond_pickaxe", "wooden_axe", "stone_axe", "iron_axe", "golden_axe", "diamond_axe", "wooden_shovel", "stone_shovel", "iron_shovel", "golden_shovel", "diamond_shovel", "wooden_hoe", "stone_hoe", "iron_hoe", "golden_hoe", "diamond_hoe", "fishing_rod","apple", "cooked_beef", "cooked_chicken", "cooked_cod", "cooked_porkchop", "cooked_salmon", "cookie", "bread", "carrot", "chorus_fruit", "cooked_mutton", "honey_bottle", "melon_slice", "mushroom_stew", "potato", "pumpkin_pie", "rabbit_stew", "beetroot_soup","diamond", "iron_ingot", "gold_ingot", "stick", "enchanting_table", "book", "leather", "paper", "sugar_cane", "bone_meal", "charcoal", "coal", "obsidian", "redstone", "glowstone_dust", "emerald", "netherite_ingot", "blaze_rod", "prismarine_shard", "ender_pearl", "quartz", "shulker_shell","netherite_ingot", "netherite_block", "netherite_axe", "netherite_pickaxe", "netherite_shovel", "netherite_sword", "netherite_helmet", "netherite_chestplate", "netherite_leggings", "netherite_boots","netherite_hoe"];
+				if (items.some(item => efileName.includes(item))) {
+				  const matchingItem = items.find(item => efileName.includes(item));
+				  muban_item = matchingItem;
+				
+				}
+			} else {
+				muban_item = muban_edit_item.value
+				console.log("有");
+			}
+			
+			
 			if (ss[m].size > 1024 * 1024) {
 				sfileSize = (Math.round(ss[m].size / (1024 * 1024))).toString() + 'MB';
 			} else {
